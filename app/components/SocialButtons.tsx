@@ -1,4 +1,4 @@
-import { Facebook, Twitter, Instagram } from "lucide-react";
+import { Facebook, Twitter } from "lucide-react";
 import TikTokIcon from "../icons/IconIonLogoTiktok";
 
 export default function SocialButtons() {
