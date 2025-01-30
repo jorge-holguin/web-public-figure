@@ -8,14 +8,21 @@ export default function Contacto() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm()
+  } = useForm<FormData>()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitSuccess, setSubmitSuccess] = useState(false)
 
-  const onSubmit = async (data) => {
+  interface FormData {
+    nombre: string
+    email: string
+    mensaje: string
+  }
+
+  const onSubmit = async (data: FormData): Promise<void> => {
+    console.log("Formulario enviado con los siguientes datos:", data) // 👀 Agregado para depuración
     setIsSubmitting(true)
-    // Here you would typically send the form data to your backend API
-    await new Promise((resolve) => setTimeout(resolve, 2000)) // Simulating API call
+    // Aquí típicamente enviarías los datos a tu API
+    await new Promise((resolve) => setTimeout(resolve, 2000)) // Simulación de llamada a API
     setIsSubmitting(false)
     setSubmitSuccess(true)
   }
@@ -88,4 +95,3 @@ export default function Contacto() {
     </div>
   )
 }
-
