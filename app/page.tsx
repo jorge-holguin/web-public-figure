@@ -1,5 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
+import logo from "../assets/hector_portada.jpg";
 
 export default function Home() {
   return (
@@ -25,7 +26,7 @@ export default function Home() {
           </div>
           <div className="mt-10 lg:mt-0">
             <Image
-              src="/candidate.jpg"
+              src={logo}
               alt="Candidato de Somos Perú"
               width={600}
               height={400}

@@ -5,6 +5,8 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Menu, X, Sun, Moon } from "lucide-react"
 import { useTheme } from "next-themes"
+import Image from "next/image";
+import logo from "../../assets/logo_somos.png";
 
 const navItems = [
   { name: "Inicio", path: "/" },
@@ -31,7 +33,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <Link href="/" className="flex-shrink-0">
-              <img className="h-8 w-auto" src="/logo.png" alt="Logo Somos Perú" />
+              <Image className="h-12 w-auto" src={logo} alt="Logo Somos Perú" />
             </Link>
           </div>
           <div className="hidden md:block">
