@@ -2,25 +2,25 @@ import { CheckCircle } from "lucide-react"
 
 const leyesAprobadas = [
   {
-    titulo: "Ley de Fortalecimiento de la Educación Pública",
+    titulo: "Ley 1",
     descripcion:
-      "Esta ley busca mejorar la calidad de la educación pública mediante la inversión en infraestructura y capacitación docente.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac purus sit amet nisl tincidunt tincidunt.",
     fecha: "15 de marzo de 2022",
   },
   {
-    titulo: "Ley de Protección del Medio Ambiente",
+    titulo: "Ley 2",
     descripcion:
-      "Establece medidas para la conservación de áreas naturales y la reducción de la contaminación en zonas urbanas.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac purus sit amet nisl tincidunt tincidunt.",
     fecha: "22 de abril de 2022",
   },
   {
-    titulo: "Ley de Fomento al Emprendimiento",
-    descripcion: "Proporciona incentivos fiscales y facilidades administrativas para la creación de nuevas empresas.",
+    titulo: "Ley 3",
+    descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     fecha: "10 de junio de 2022",
   },
   {
-    titulo: "Ley de Transparencia en la Gestión Pública",
-    descripcion: "Fortalece los mecanismos de rendición de cuentas y acceso a la información pública.",
+    titulo: "Ley 4",
+    descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     fecha: "5 de septiembre de 2022",
   },
 ]
