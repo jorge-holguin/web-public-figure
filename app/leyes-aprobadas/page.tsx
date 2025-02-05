@@ -14,7 +14,7 @@ interface Ley {
 
 export default function LeyesAprobadas() {
   const [leyes, setLeyes] = useState<Ley[]>([]);
-  const [filtroEstado, setFiltroEstado] = useState<string>("PRESENTADO"); // 🔥 Mostrar solo "PRESENTADO" por defecto
+  const [filtroEstado, setFiltroEstado] = useState<string>("PUBLICADO"); // 🔥 Mostrar solo "PUBLICADO" por defecto
   const [filtroAnio, setFiltroAnio] = useState<string>(""); // Filtro de año vacío por defecto
 
   useEffect(() => {
@@ -54,7 +54,7 @@ export default function LeyesAprobadas() {
             value={filtroEstado}
             onChange={(e) => setFiltroEstado(e.target.value)}
           >
-            <option value="PRESENTADO">Presentado</option>
+            <option value="PUBLICADO">Publicado</option>
             <option value="EN COMISION">En Comisión</option>
             <option value="">Todos los estados</option>
           </select>
@@ -84,7 +84,7 @@ export default function LeyesAprobadas() {
                 <div className="flex items-start">
                   {/* Icono dependiendo del estado */}
                   <div className="flex-shrink-0">
-                    {ley.estado === "PRESENTADO" ? (
+                    {ley.estado === "PUBLICADO" ? (
                       <CheckCircle className="h-6 w-6 text-green-500" />
                     ) : ley.estado === "EN COMISION" ? (
                       <FolderOpen className="h-6 w-6 text-blue-500" />
@@ -99,7 +99,7 @@ export default function LeyesAprobadas() {
 
                     {/* Mostrar fecha de actualización con la lógica corregida */}
                     <p className="mt-2 text-sm text-gray-400 dark:text-gray-500">
-                      {ley.estado === "PRESENTADO"
+                      {ley.estado === "PUBLICADO"
                         ? `Presentada el ${ley.fecha}`
                         : ley.estado === "EN COMISION"
                         ? `En Comisión desde el ${ley.fecha}`
