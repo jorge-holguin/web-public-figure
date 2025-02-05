@@ -54,7 +54,7 @@ export default function LeyesAprobadas() {
             value={filtroEstado}
             onChange={(e) => setFiltroEstado(e.target.value)}
           >
-            <option value="PUBLICADO">Publicado</option>
+            <option value="PUBLICADO">Publicados</option>
             <option value="EN COMISION">En Comisión</option>
             <option value="">Todos los estados</option>
           </select>
