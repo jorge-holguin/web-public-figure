@@ -2,6 +2,8 @@ import { getBlogPosts } from "@/lib/notion";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 
+// Genera los parámetros de las rutas estáticas para cada post.
+// Se filtran aquellos posts cuyo slug esté vacío o sea inválido.
 export async function generateStaticParams() {
   const blogs = await getBlogPosts();
 
@@ -10,11 +12,12 @@ export async function generateStaticParams() {
     return [];
   }
 
-  return blogs.map((post) => ({ slug: post.slug }));
+  return blogs
+    .filter((post) => post.slug && post.slug.trim() !== "")
+    .map((post) => ({ slug: post.slug }));
 }
 
-
-
+// Página de detalle del blog para cada slug
 export default async function BlogPost({ params }: { params: { slug: string } }) {
   const blogs = await getBlogPosts();
 
@@ -40,11 +43,12 @@ export default async function BlogPost({ params }: { params: { slug: string } })
           height={400}
           priority
           className="w-full h-64 object-cover rounded-lg"
+          unoptimized={true} // Si la imagen proviene de un host externo
         />
       ) : (
         <p className="text-gray-500">⚠️ Imagen no disponible</p>
       )}
-      
+
       <h1 className="text-4xl font-extrabold text-gray-900 dark:text-white mt-6">
         {post.title}
       </h1>
