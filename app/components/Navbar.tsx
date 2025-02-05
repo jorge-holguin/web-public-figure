@@ -12,7 +12,7 @@ const navItems = [
   { name: "Inicio", path: "/" },
   { name: "Biografía", path: "/biografia" },
   { name: "Trayectoria", path: "/trayectoria" },
-  { name: "Leyes Aprobadas", path: "/leyes-aprobadas" },
+  { name: "Proyectos de Ley", path: "/leyes-aprobadas" },
   { name: "Blog", path: "/blog" },
   { name: "Contacto", path: "/contacto" },
 ]
@@ -69,7 +69,7 @@ export default function Navbar() {
               {isOpen ? (
                 <X className="block h-6 w-6" aria-hidden="true" />
               ) : (
-                <Menu className="block h-6 w-6" aria-hidden="true" />
+                <Menu className="block h-6 w-6 block md:hidden" aria-hidden="true"  />
               )}
             </button>
           </div>
