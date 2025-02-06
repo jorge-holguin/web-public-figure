@@ -1,9 +1,42 @@
+// app/blog/[slug]/page.tsx
 import { getBlogPosts } from "@/lib/notion";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 
-// Genera los parámetros de las rutas estáticas para cada post.
-// Se filtran aquellos posts cuyo slug esté vacío o sea inválido.
+export const revalidate = 1800; // La página se revalidará cada 30 minutos
+
+// Función para renderizar el array de rich text en JSX, respetando las anotaciones
+function renderRichText(richTexts: any[]) {
+  return richTexts.map((richText, idx) => {
+    const { annotations, text } = richText;
+    const style: React.CSSProperties = {
+      fontWeight: annotations.bold ? 'bold' : 'normal',
+      fontStyle: annotations.italic ? 'italic' : 'normal',
+      textDecoration:
+        annotations.underline
+          ? 'underline'
+          : annotations.strikethrough
+          ? 'line-through'
+          : 'none',
+      color: annotations.color !== 'default' ? annotations.color : 'inherit',
+    };
+
+    if (text.link) {
+      return (
+        <a key={idx} href={text.link.url} style={style}>
+          {text.content}
+        </a>
+      );
+    }
+    return (
+      <span key={idx} style={style}>
+        {text.content}
+      </span>
+    );
+  });
+}
+
+// Genera los parámetros estáticos filtrando posts sin slug válido
 export async function generateStaticParams() {
   const blogs = await getBlogPosts();
 
@@ -17,7 +50,7 @@ export async function generateStaticParams() {
     .map((post) => ({ slug: post.slug }));
 }
 
-// Página de detalle del blog para cada slug
+// Página de detalle del blog
 export default async function BlogPost({ params }: { params: { slug: string } }) {
   const blogs = await getBlogPosts();
 
@@ -43,7 +76,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
           height={400}
           priority
           className="w-full h-64 object-cover rounded-lg"
-          unoptimized={true} // Si la imagen proviene de un host externo
+          unoptimized={true} // Para imágenes externas sin optimización
         />
       ) : (
         <p className="text-gray-500">⚠️ Imagen no disponible</p>
@@ -55,7 +88,12 @@ export default async function BlogPost({ params }: { params: { slug: string } })
       <p className="mt-2 text-sm text-gray-500">
         {post.date ? new Date(post.date).toLocaleDateString() : "Fecha no disponible"}
       </p>
-      <p className="mt-4 text-gray-600 dark:text-gray-300">{post.content}</p>
+      <div
+        className="mt-4 text-gray-600 dark:text-gray-300"
+        style={{ textAlign: "justify" }} // Esto justifica el contenido
+      >
+        {renderRichText(post.content)}
+      </div>
     </div>
   );
 }
