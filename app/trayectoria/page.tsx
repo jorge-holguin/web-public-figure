@@ -3,13 +3,25 @@ import React from "react";
 export default function Trayectoria() {
   const trayectoria = [
     {
-      año: "2021-2025",
+      año: "2021-2026",
       cargo: "Congresista de la República",
       descripcion:
-        "Participó en la creación y debate de leyes en beneficio del sector rural y derechos humanos.",
+        "Electo para el periodo 2021-2026, participó en la creación y debate de leyes en beneficio del sector rural y derechos humanos.",
     },
     {
-      año: "2006-2010",
+      año: "2022",
+      cargo: "Presidente del Consejo de Ministros",
+      descripcion:
+        "Ejerció como Presidente del Consejo de Ministros del Perú, coordinando las políticas gubernamentales y liderando el gabinete ministerial.",
+    },
+    {
+      año: "2012-2021",
+      cargo: "Director General en Centro Jurídico Valer & Abogados S.A.C.",
+      descripcion:
+        "Dirigió y administró el estudio jurídico, brindando asesoría legal en diversas áreas del derecho.",
+    },
+    {
+      año: "2006",
       cargo: "Gerente en Banco Agropecuario e INDEPA",
       descripcion:
         "Lideró iniciativas para fortalecer el acceso financiero a comunidades campesinas y nativas.",
@@ -21,25 +33,19 @@ export default function Trayectoria() {
         "Trabajó en programas de apoyo a inmigrantes latinos en España.",
     },
     {
-      año: "1997",
-      cargo: "Doctorado en Derecho y Relaciones Internacionales",
+      año: "1993-1997",
+      cargo: "Consultor en Colombia",
       descripcion:
-        "Obtuvo su doctorado en la Universidad Nacional del País Vasco, España.",
+        "Se desempeñó como consultor del Instituto Interamericano de Cooperación para la Agricultura (IICA) de la OEA y jefe de programas del PNUD y BID.",
     },
     {
       año: "1985-1990",
       cargo: "Asesor en el Senado de la República",
       descripcion:
-        "Trabajó con el senador Ramiro Prialé en políticas públicas para comunidades campesinas.",
-    },
-    {
-      año: "1983",
-      cargo: "Presidente Ejecutivo del Instituto de Comunidades Campesinas y Nativas",
-      descripcion:
-        "Ocupó un cargo con rango viceministerial en la Presidencia del Consejo de Ministros.",
+        "Colaboró con el senador Ramiro Prialé en políticas públicas para comunidades campesinas.",
     },
   ];
-
+  
   return (
     <div className="bg-gray-100 dark:bg-gray-900">
       <div className="max-w-5xl mx-auto py-12 px-6 sm:px-8 lg:py-16 lg:px-10">
