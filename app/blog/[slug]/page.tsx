@@ -3,22 +3,42 @@ import { getBlogPosts } from "@/lib/notion";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 
-export const revalidate = 1800; // La página se revalidará cada 30 minutos
+// Hacemos que la página se revalide cada 30 minutos (1800 segundos)
+export const revalidate = 1800;
+
+// Define una interfaz para los fragmentos de rich text de Notion
+interface NotionRichText {
+  type: string;
+  text: {
+    content: string;
+    link: { url: string } | null;
+  };
+  annotations: {
+    bold: boolean;
+    italic: boolean;
+    underline: boolean;
+    strikethrough: boolean;
+    code: boolean;
+    color: string;
+  };
+  plain_text: string;
+  href: string | null;
+}
 
 // Función para renderizar el array de rich text en JSX, respetando las anotaciones
-function renderRichText(richTexts: any[]) {
+function renderRichText(richTexts: NotionRichText[]): JSX.Element[] {
   return richTexts.map((richText, idx) => {
     const { annotations, text } = richText;
     const style: React.CSSProperties = {
-      fontWeight: annotations.bold ? 'bold' : 'normal',
-      fontStyle: annotations.italic ? 'italic' : 'normal',
+      fontWeight: annotations.bold ? "bold" : "normal",
+      fontStyle: annotations.italic ? "italic" : "normal",
       textDecoration:
         annotations.underline
-          ? 'underline'
+          ? "underline"
           : annotations.strikethrough
-          ? 'line-through'
-          : 'none',
-      color: annotations.color !== 'default' ? annotations.color : 'inherit',
+          ? "line-through"
+          : "none",
+      color: annotations.color !== "default" ? annotations.color : "inherit",
     };
 
     if (text.link) {
@@ -36,7 +56,7 @@ function renderRichText(richTexts: any[]) {
   });
 }
 
-// Genera los parámetros estáticos filtrando posts sin slug válido
+// Genera los parámetros estáticos filtrando posts sin un slug válido
 export async function generateStaticParams() {
   const blogs = await getBlogPosts();
 
