@@ -50,11 +50,11 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4">Contacto</h3>
             <p className="text-sm">
-              Lima, Perú
+              Jirón Áncash 569, Lima, Perú
               <br />
-              Email: contacto@somosperu.pe
+              Email: hvaler@congreso.gob.pe
               <br />
-              Teléfono: +51 1 234 5678
+              Teléfono: + 1 3117777 Anexo: 7250
             </p>
           </div>
         </div>
