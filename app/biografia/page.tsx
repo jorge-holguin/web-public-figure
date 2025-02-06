@@ -27,7 +27,7 @@ export default function Biografia() {
         </p>
 
         <p className="mt-2 text-lg text-gray-500 dark:text-gray-300">
-          Ha desempeñado cargos como <strong>exviceministro de Comunidades Campesinas</strong> a los 29 años de edad, exfuncionario del IICA – OEA y exfuncionario de la ONU.
+          Ha desempeñado cargos como <strong>Presidente Ejecutivo del Instituto de Comunidades Campesinas</strong> a los 29 años de edad, exfuncionario del IICA – OEA y exfuncionario de la ONU.
         </p>
 
         <p className="mt-2 text-lg text-gray-500 dark:text-gray-300">
