@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Blog() {
   interface BlogPost {
@@ -19,8 +20,8 @@ export default function Blog() {
     fetch("/api/blogs")
       .then((res) => res.json())
       .then((data) => {
-        console.log("Datos de Notion:", data); // Muestra los datos en la consola
-        setBlogPosts(Array.isArray(data) ? data : []); // Asegura que sea un array
+        console.log("Datos de Notion:", data);
+        setBlogPosts(Array.isArray(data) ? data : []);
       })
       .catch((error) => console.error("Error obteniendo blogs:", error));
   }, []);
@@ -32,18 +33,21 @@ export default function Blog() {
           Blog de Noticias
         </h1>
 
-        {/* Verifica si blogPosts es un array antes de hacer .map() */}
-        {Array.isArray(blogPosts) && blogPosts.length > 0 ? (
+        {blogPosts.length > 0 ? (
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {blogPosts.map((post) => (
               <div
                 key={post.id}
                 className="bg-white dark:bg-gray-800 shadow-md rounded-lg overflow-hidden"
               >
-                <img
+                {/* Usamos el componente Image de Next.js para optimizar la carga de la imagen */}
+                <Image
                   src={post.image}
                   alt={post.title}
+                  width={600}
+                  height={192} // h-48 equivale aproximadamente a 192px
                   className="w-full h-48 object-cover"
+                  unoptimized={true} // Usa true si aún no tienes configurado el dominio en next.config.js
                 />
                 <div className="p-6">
                   <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
