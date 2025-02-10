@@ -2,11 +2,10 @@
 import { getBlogPosts } from "@/lib/notion";
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import { transformNotionImageUrl } from "@/lib/utils";
 
-// Hacemos que la página se revalide cada 30 minutos (1800 segundos)
 export const revalidate = 1800;
 
-// Define una interfaz para los fragmentos de rich text de Notion
 interface NotionRichText {
   type: string;
   text: {
@@ -25,7 +24,6 @@ interface NotionRichText {
   href: string | null;
 }
 
-// Función para renderizar el array de rich text en JSX, respetando las anotaciones
 function renderRichText(richTexts: NotionRichText[]): JSX.Element[] {
   return richTexts.map((richText, idx) => {
     const { annotations, text } = richText;
@@ -56,62 +54,54 @@ function renderRichText(richTexts: NotionRichText[]): JSX.Element[] {
   });
 }
 
-// Genera los parámetros estáticos filtrando posts sin un slug válido
 export async function generateStaticParams() {
   const blogs = await getBlogPosts();
-
   if (!blogs || blogs.length === 0) {
-    console.warn("⚠️ No se encontraron blogs en Notion. No se generarán páginas estáticas.");
+    console.warn("No se encontraron blogs en Notion.");
     return [];
   }
-
   return blogs
     .filter((post) => post.slug && post.slug.trim() !== "")
     .map((post) => ({ slug: post.slug }));
 }
 
-// Página de detalle del blog
 export default async function BlogPost({ params }: { params: { slug: string } }) {
   const blogs = await getBlogPosts();
-
   if (!blogs || blogs.length === 0) {
-    console.error("❌ Error: No se encontraron blogs.");
+    console.error("[BlogPost] No se encontraron blogs.");
     return notFound();
   }
-
   const post = blogs.find((p) => p.slug === params.slug);
-
   if (!post) {
-    console.error(`❌ Error: No se encontró el post con slug: ${params.slug}`);
+    console.error("[BlogPost] No se encontró el post para slug:", params.slug);
     return notFound();
   }
+  console.log("[BlogPost] Post encontrado:", post.title, "Con imagen:", post.image);
+  const transformedUrl = transformNotionImageUrl(post.image);
+  console.log("[BlogPost] URL transformada:", transformedUrl);
 
   return (
     <div className="max-w-3xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
       {post.image ? (
         <Image
-          src={post.image}
+          src={transformedUrl}
           alt={post.title}
           width={800}
           height={400}
           priority
           className="w-full h-64 object-cover rounded-lg"
-          unoptimized={true} // Para imágenes externas sin optimización
+          unoptimized={true}
         />
       ) : (
         <p className="text-gray-500">⚠️ Imagen no disponible</p>
       )}
-
       <h1 className="text-4xl font-extrabold text-gray-900 dark:text-white mt-6">
         {post.title}
       </h1>
       <p className="mt-2 text-sm text-gray-500">
         {post.date ? new Date(post.date).toLocaleDateString() : "Fecha no disponible"}
       </p>
-      <div
-        className="mt-4 text-gray-600 dark:text-gray-300"
-        style={{ textAlign: "justify" }} // Esto justifica el contenido
-      >
+      <div className="mt-4 text-gray-600 dark:text-gray-300" style={{ textAlign: "justify" }}>
         {renderRichText(post.content)}
       </div>
     </div>

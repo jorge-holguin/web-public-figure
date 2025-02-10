@@ -1,19 +1,21 @@
+// app/blog/page.tsx
 "use client";
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { transformNotionImageUrl } from "../../lib/utils"; // Asegúrate de que el path sea correcto
+
+interface BlogPost {
+  id: string;
+  image: string;
+  title: string;
+  slug: string;
+  excerpt: string;
+  date: string;
+}
 
 export default function Blog() {
-  interface BlogPost {
-    id: string;
-    image: string;
-    title: string;
-    slug: string;
-    excerpt: string;
-    date: string;
-  }
-
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
 
   useEffect(() => {
@@ -40,14 +42,14 @@ export default function Blog() {
                 key={post.id}
                 className="bg-white dark:bg-gray-800 shadow-md rounded-lg overflow-hidden"
               >
-                {/* Usamos el componente Image de Next.js para optimizar la carga de la imagen */}
+                {/* Transforma la URL si proviene de Notion */}
                 <Image
-                  src={post.image}
+                  src={transformNotionImageUrl(post.image)}
                   alt={post.title}
                   width={600}
-                  height={192} // h-48 equivale aproximadamente a 192px
+                  height={192} // Aproximadamente h-48 (192px)
                   className="w-full h-48 object-cover"
-                  unoptimized={true} // Usa true si aún no tienes configurado el dominio en next.config.js
+                  unoptimized={true} // Usa true si no tienes configurado el dominio en next.config.js
                 />
                 <div className="p-6">
                   <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
