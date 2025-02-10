@@ -1,4 +1,4 @@
-// app/blog/[slug]/page.tsx
+import React from "react"; // Agrega esta línea
 import { getBlogPosts } from "@/lib/notion";
 import { notFound } from "next/navigation";
 import Image from "next/image";
@@ -39,16 +39,25 @@ function renderRichText(richTexts: NotionRichText[]): JSX.Element[] {
       color: annotations.color !== "default" ? annotations.color : "inherit",
     };
 
+    // Separamos el contenido por saltos de línea
+    const lines = text.content.split("\n");
+    const content = lines.map((line, lineIdx) => (
+      <React.Fragment key={lineIdx}>
+        {line}
+        {lineIdx < lines.length - 1 && <br />}
+      </React.Fragment>
+    ));
+
     if (text.link) {
       return (
         <a key={idx} href={text.link.url} style={style}>
-          {text.content}
+          {content}
         </a>
       );
     }
     return (
       <span key={idx} style={style}>
-        {text.content}
+        {content}
       </span>
     );
   });
