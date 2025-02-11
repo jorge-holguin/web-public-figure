@@ -1,21 +1,22 @@
-import "./globals.css"
-import { Inter } from "next/font/google"
-import Navbar from "./components/Navbar"
-import Footer from "./components/Footer"
-import SocialButtons from "./components/SocialButtons"
-import { ThemeProvider } from "next-themes"
+import "./globals.css";
+import { Inter } from "next/font/google";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import SocialButtons from "./components/SocialButtons";
+import { ThemeProvider } from "next-themes";
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({ subsets: ["latin"] });
 
-export const metadata = {
-  title: "Candidato Somos Perú",
-  description: "Sitio web oficial del candidato de Somos Perú",
-}
+// Puedes comentar o eliminar estos metadatos globales para que no sobrescriban los de las páginas.
+// export const metadata = {
+//   title: "Candidato Somos Perú",
+//   description: "Sitio web oficial del candidato de Somos Perú",
+// };
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="es">
@@ -28,6 +29,5 @@ export default function RootLayout({
         </ThemeProvider>
       </body>
     </html>
-  )
+  );
 }
-
