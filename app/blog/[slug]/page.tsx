@@ -1,10 +1,46 @@
-import React from "react"; // Agrega esta línea
 import { getBlogPosts } from "@/lib/notion";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { transformNotionImageUrl } from "@/lib/utils";
+import React from "react";
 
+// Revalidación cada 30 minutos (1800 segundos)
 export const revalidate = 1800;
+
+// Exporta la función para generar metadatos dinámicos
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+  const posts = await getBlogPosts();
+  const post = posts.find((p) => p.slug === params.slug);
+  if (!post) {
+    return {
+      title: "Post no encontrado",
+    };
+  }
+  // Aseguramos que la URL de la imagen sea la correcta (puedes usar transformNotionImageUrl o similar)
+  const imageUrl = transformNotionImageUrl(post.image);
+
+  return {
+    title: post.title,
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      url: `https://tu-dominio.com/blog/${post.slug}`,
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+      images: [imageUrl],
+    },
+  };
+}
 
 interface NotionRichText {
   type: string;
@@ -39,7 +75,7 @@ function renderRichText(richTexts: NotionRichText[]): JSX.Element[] {
       color: annotations.color !== "default" ? annotations.color : "inherit",
     };
 
-    // Separamos el contenido por saltos de línea
+    // Separa el contenido por saltos de línea y añade <br />
     const lines = text.content.split("\n");
     const content = lines.map((line, lineIdx) => (
       <React.Fragment key={lineIdx}>
@@ -85,9 +121,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
     console.error("[BlogPost] No se encontró el post para slug:", params.slug);
     return notFound();
   }
-  console.log("[BlogPost] Post encontrado:", post.title, "Con imagen:", post.image);
   const transformedUrl = transformNotionImageUrl(post.image);
-  console.log("[BlogPost] URL transformada:", transformedUrl);
 
   return (
     <div className="max-w-3xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
