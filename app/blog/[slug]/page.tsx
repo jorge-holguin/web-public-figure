@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     openGraph: {
       title: post.title,
       description: post.excerpt,
-      url: `https://tu-dominio.com/blog/${post.slug}`,
+      url: `https://hectorvaler.com/blog/${post.slug}`,
       images: [
         {
           url: imageUrl,
