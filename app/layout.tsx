@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import SocialButtons from "./components/SocialButtons";
 import { ThemeProvider } from "next-themes";
+//import MotionBackground from "./MotionBackground"; 
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,8 +21,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <body className={`${inter.className} flex flex-col min-h-screen`}>
+      <body className={`${inter.className} relative min-h-screen`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          {/* Monta el componente cliente que contiene la animación de fondo */}
+          {/* <MotionBackground /> */}
+
           <Navbar />
           <main className="flex-grow">{children}</main>
           <SocialButtons />
