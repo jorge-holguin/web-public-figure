@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: "Contacto | Somos Perú",
     description:
       "Póngase en contacto con el equipo de Héctor Valer Pinto y Somos Perú. Estamos aquí para escuchar sus inquietudes y propuestas.",
-    images: ["../../../assets/hector_portada.jpeg"],
+    images: ["contacto.jpg"],
   },
 }
 
