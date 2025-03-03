@@ -3,7 +3,7 @@ import TikTokIcon from "../icons/IconIonLogoTiktok";
 import YouTubeIcon from "../icons/iconIonLogoYoutube";
 import TwitterIcon from "../icons/iconIonLogoTwitter";
 //import InstagramIcon from "../icons/iconIonLogoInstagram";
-//Simport KickIcon from "../icons/iconIonLogoKick";
+import KickIcon from "../icons/iconIonLogoKick";
 
 export default function SocialButtons() {
   return (
@@ -49,14 +49,14 @@ export default function SocialButtons() {
         >
           <YouTubeIcon width="24px" height="24px" style={{ color: "#ffffff" }} />
         </a>
-        {/* <a
-          href="https://www.kick.com/@hectorvaler"
+        <a
+          href="https://kick.com/hector-valer"
           target="_blank"
           rel="noopener noreferrer"
           className="bg-black text-white p-2 rounded-md hover:bg-gray-900 transition-colors duration-200 flex items-center justify-center"
           >
           <KickIcon width="24px" height="24px" style={{ color: "#ffffff" }} />
-        </a> */}
+        </a>
       </div>
     </div>
   );
