@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: "Biografía de Héctor Valer Pinto | Somos Perú",
     description:
       "Conozca la trayectoria y experiencia de Héctor Valer Pinto, líder de Somos Perú y defensor de los derechos de los peruanos.",
-    images: ["biografia.png"],
+    images: ["./biografia.jpg"],
   },
 }
 
