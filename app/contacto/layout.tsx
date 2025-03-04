@@ -2,14 +2,19 @@ import type React from "react"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Contacto | Somos Perú",
-  description:
-    "Póngase en contacto con el equipo de Héctor Valer Pinto y Somos Perú. Estamos aquí para escuchar sus inquietudes y propuestas.",
+  title: "Contacto",
+  description: "Ponte en contacto con nosotros. Estamos aquí para escucharte y responder a tus inquietudes.",
   openGraph: {
-    title: "Contacto | Somos Perú",
-    description:
-      "Póngase en contacto con el equipo de Héctor Valer Pinto y Somos Perú. Estamos aquí para escuchar sus inquietudes y propuestas.",
-    images: ["/contacto.jpg"],
+    title: "Contacto | Héctor Valer",
+    description: "Ponte en contacto con nosotros. Estamos aquí para escucharte y responder a tus inquietudes.",
+    images: [
+      {
+        url: "/contacto.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Contacto Héctor Valer",
+      },
+    ],
   },
 }
 
