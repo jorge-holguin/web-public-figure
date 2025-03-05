@@ -12,7 +12,7 @@ export async function generateMetadata() {
     openGraph: {
       title: "Página Oficial de Héctor Valer | Juntos por un Perú Mejor",
       description: "Bienvenido a la página oficial de Héctor Valer. Trabajamos incansablemente para construir un futuro próspero y justo para todos los peruanos.",
-      images: ["portada.jpeg"],
+      images: ["/portada.jpeg"],
       url: "https://hectorvaler.com", 
       type: "website",
     },
@@ -20,7 +20,7 @@ export async function generateMetadata() {
       card: "summary_large_image",
       title: "Página Oficial de Héctor Valer | Juntos por un Perú Mejor",
       description: "Bienvenido a la página oficial de Héctor Valer. Trabajamos incansablemente para construir un futuro próspero y justo para todos los peruanos.",
-      images: ["portada.jpeg"],
+      images: ["/portada.jpeg"],
     },
   };
 }
