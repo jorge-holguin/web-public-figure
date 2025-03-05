@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import Image from 'next/image';
+import PageBanner from "../components/PageBanner"
 
 export default function Contacto() {
   const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
@@ -37,15 +37,7 @@ export default function Contacto() {
 
   return (
     <div className="bg-gray-100 dark:bg-gray-900">
-      {/* Banner de imagen */}
-      <div className="relative w-full h-64 md:h-96">
-        <Image src="/contacto.jpg" alt="Contacto banner" layout="fill" objectFit="cover" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent flex items-center">
-          <div className="w-1/2 p-6">
-            <h1 className="text-4xl md:text-5xl font-bold text-white">Contáctanos</h1>
-          </div>
-        </div>
-      </div>
+      <PageBanner title="Contáctanos" imageSrc="/contacto.jpg" imageAlt="Banner de contacto" />
 
       <div className="max-w-3xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
         {submitSuccess ? (

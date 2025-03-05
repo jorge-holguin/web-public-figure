@@ -13,14 +13,17 @@ import valer_naciones_unidas from "../../assets/fotos/valer_naciones_unidas.jpg"
 import valer_BID from "../../assets/fotos/valer_BID.jpg";
 import valer_evo from "../../assets/fotos/valer_evo.jpg";
 import valer_retorno_peru from "../../assets/fotos/valer_retorno_peru.png"; 
+import PageBanner from "../components/PageBanner"
 
 export default function Biografia() {
   return (
     <div className="bg-white dark:bg-gray-900">
+      <PageBanner
+        title="Biografía"
+        imageSrc="/biografia.jpg"
+        imageAlt="Banner minimalista para la biografía"
+      />
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
-        <h1 className="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl">
-          Biografía de Héctor Valer Pinto
-        </h1>
 
         <p className="mt-4 text-lg text-gray-500 dark:text-gray-300">
           El congresista de la República <strong>Héctor Valer Pinto</strong> cuenta con una formación multidisciplinaria en varios países. Es doctor en Derecho, con especialidad en Derecho Penal y Desarrollo Rural, y posee amplia experiencia en el sector público y en organizaciones internacionales vinculadas a los derechos humanos.

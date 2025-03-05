@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { transformNotionImageUrl } from "../../lib/utils"; // Asegúrate de que el path sea correcto
+import PageBanner from "../components/PageBanner"
 
 interface BlogPost {
   id: string;
@@ -30,6 +31,11 @@ export default function Blog() {
 
   return (
     <div className="bg-gray-100 dark:bg-gray-900">
+      <PageBanner
+        title="Blog de Noticias"
+        imageSrc="/noticias.jpg"
+        imageAlt="Banner minimalista para el blog"
+      />
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
         <h1 className="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl mb-8">
           Blog de Noticias
