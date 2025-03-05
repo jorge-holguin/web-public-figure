@@ -2,17 +2,17 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { Menu, X, Sun, Moon } from "lucide-react"
 import { useTheme } from "next-themes"
-import Image from "next/image";
-import logo from "../../assets/logo_somos.png";
 
+// Actualizar el array navItems para incluir el enlace al equipo
 const navItems = [
   { name: "Inicio", path: "/" },
   { name: "Biografía", path: "/biografia" },
   { name: "Trayectoria", path: "/trayectoria" },
-  { name: "Proyectos de Ley", path: "/leyes-aprobadas" },
+  { name: "Leyes Aprobadas", path: "/leyes-aprobadas" },
   { name: "Blog", path: "/blog" },
   { name: "Contacto", path: "/contacto" },
 ]
@@ -33,7 +33,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <Link href="/" className="flex-shrink-0">
-              <Image className="h-12 w-auto" src={logo} alt="Logo Somos Perú" />
+              <Image src="/logo.svg" alt="Logo Somos Perú" width={32} height={32} className="h-8 w-auto" />
             </Link>
           </div>
           <div className="hidden md:block">
@@ -69,7 +69,7 @@ export default function Navbar() {
               {isOpen ? (
                 <X className="block h-6 w-6" aria-hidden="true" />
               ) : (
-                <Menu className="block h-6 w-6 block md:hidden" aria-hidden="true"  />
+                <Menu className="block h-6 w-6" aria-hidden="true" />
               )}
             </button>
           </div>
