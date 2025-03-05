@@ -1,6 +1,6 @@
 import type React from "react"
-import { getBlogPosts } from "@/lib/notion"
-import { transformNotionImageUrl } from "@/lib/utils"
+import { getBlogPosts } from "../../lib/notion"
+import { transformNotionImageUrl } from "../../lib/utils"
 import type { Metadata } from "next"
 
 export const revalidate = 1800 // Revalidación cada 30 minutos
