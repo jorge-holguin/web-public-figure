@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { CheckCircle, Clock, FolderOpen, FileText } from "lucide-react";
+import PageBanner from "../components/PageBanner"
 
 interface Ley {
   id: string;
@@ -42,10 +43,12 @@ export default function LeyesAprobadas() {
 
   return (
     <div className="bg-gray-100 dark:bg-gray-900">
+      <PageBanner
+        title="Proyectos de Ley"
+        imageSrc="/leyes-aprobadas-valer.jpg"
+        imageAlt="Banner de leyes aprobadas"
+      />
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
-        <h1 className="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl mb-8">
-          Proyectos de Ley
-        </h1>
 
         {/* Filtros */}
         <div className="flex flex-wrap gap-4 mb-6">

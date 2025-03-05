@@ -1,4 +1,5 @@
 import React from "react";
+import PageBanner from "../components/PageBanner"
 
 export default function Trayectoria() {
   const trayectoria = [
@@ -48,10 +49,12 @@ export default function Trayectoria() {
   
   return (
     <div className="bg-gray-100 dark:bg-gray-900">
+      <PageBanner
+        title="Trayectoria Política"
+        imageSrc="/trayectoria-politica.jpg"
+        imageAlt="Banner de trayectoria política"
+      />
       <div className="max-w-5xl mx-auto py-12 px-6 sm:px-8 lg:py-16 lg:px-10">
-        <h1 className="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl text-center">
-          Trayectoria Política
-        </h1>
         <div className="mt-10 space-y-6">
           {trayectoria.map((item, index) => (
             <div
