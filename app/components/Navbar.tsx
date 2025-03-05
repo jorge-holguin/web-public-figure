@@ -6,6 +6,7 @@ import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { Menu, X, Sun, Moon } from "lucide-react"
 import { useTheme } from "next-themes"
+import logo from "../../assets/logo_somos.png";
 
 // Actualizar el array navItems para incluir el enlace al equipo
 const navItems = [
@@ -33,7 +34,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <Link href="/" className="flex-shrink-0">
-              <Image src="/logo.svg" alt="Logo Somos Perú" width={32} height={32} className="h-8 w-auto" />
+              <Image className="h-12 w-auto" src={logo} alt="Logo Somos Perú" />
             </Link>
           </div>
           <div className="hidden md:block">
