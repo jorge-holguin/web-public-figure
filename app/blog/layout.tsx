@@ -5,27 +5,27 @@ import type { Metadata } from "next"
 
 export const revalidate = 1800 // Revalidación cada 30 minutos
 
-// Metadatos por defecto para la página principal del blog
-export const metadata: Metadata = {
-  title: "Blog de Noticias | Héctor Valer",
-  description: "Noticias, actualizaciones y propuestas de Héctor Valer Pinto y Somos Perú para un Perú mejor.",
-  openGraph: {
-    title: "Blog | Héctor Valer",
-    description: "Noticias, actualizaciones y propuestas de Héctor Valer Pinto y Somos Perú para un Perú mejor.",
-    images: [{ url: "/noticias.jpg", width: 1200, height: 630 }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Blog | Héctor Valer",
-    description: "Noticias, actualizaciones y propuestas de Héctor Valer Pinto y Somos Perú para un Perú mejor.",
-    images: ["/noticias.jpg"],
-  },
-}
-
 export async function generateMetadata({ params }: { params: { slug?: string } }): Promise<Metadata> {
-  // Si no hay slug, estamos en la página principal del blog, usamos los metadatos por defecto
+  // Si no hay slug, es la página principal del blog: retorna metadatos por defecto
   if (!params.slug) {
-    return metadata
+    return {
+      title: "Blog de Noticias | Héctor Valer",
+      description:
+        "Noticias, actualizaciones y propuestas de Héctor Valer Pinto y Somos Perú para un Perú mejor.",
+      openGraph: {
+        title: "Blog | Héctor Valer",
+        description:
+          "Noticias, actualizaciones y propuestas de Héctor Valer Pinto y Somos Perú para un Perú mejor.",
+        images: [{ url: "/noticias.jpg", width: 1200, height: 630 }],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: "Blog | Héctor Valer",
+        description:
+          "Noticias, actualizaciones y propuestas de Héctor Valer Pinto y Somos Perú para un Perú mejor.",
+        images: ["/noticias.jpg"],
+      },
+    }
   }
 
   // Si hay slug, buscamos el post específico
@@ -60,11 +60,6 @@ export async function generateMetadata({ params }: { params: { slug?: string } }
   }
 }
 
-export default function BlogLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function BlogLayout({ children }: { children: React.ReactNode }) {
   return <div className="w-full">{children}</div>
 }
-
