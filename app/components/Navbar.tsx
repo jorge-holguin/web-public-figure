@@ -34,7 +34,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <Link href="/" className="flex-shrink-0">
-              <Image className="h-12 w-auto" src={logo} alt="Logo Somos Perú" />
+            <Image className="h-12 w-auto" src={logo} alt="Logo Somos Perú" />
             </Link>
           </div>
           <div className="hidden md:block">
@@ -70,7 +70,7 @@ export default function Navbar() {
               {isOpen ? (
                 <X className="block h-6 w-6" aria-hidden="true" />
               ) : (
-                <Menu className="block h-6 w-6" aria-hidden="true" />
+                <Menu className="block h-6 w-6 block md:hidden" aria-hidden="true"  />
               )}
             </button>
           </div>
