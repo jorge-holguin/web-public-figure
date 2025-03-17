@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar"
 import Footer from "./components/Footer"
 import SocialButtons from "./components/SocialButtons"
 import { ThemeProvider } from "next-themes"
+import ChatButton from "./components/ChatButton"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -43,6 +44,7 @@ export default function RootLayout({
           <main className="flex-grow">{children}</main>
           <SocialButtons />
           <Footer />
+          <ChatButton />
         </ThemeProvider>
       </body>
     </html>
