@@ -31,8 +31,8 @@ export default function Home() {
       <div className="lg:grid lg:grid-cols-2 lg:gap-8 items-center">
         <div>
           <h1 className="text-4xl font-extrabold text-gray-900 dark:text-white sm:text-5xl md:text-6xl">
-            <span className="block">Juntos por un</span>
-            <span className="block text-red-600">Perú mejor</span>
+            <span className="block text-blue-800">Por los derechos</span>
+            <span className="block text-red-600">sociales y económicos</span>
           </h1>
           <p className="mt-3 text-base text-black-900 dark:text-gray-300 sm:mt-5 sm:text-lg md:mt-5 md:text-xl">
             Trabajando incansablemente para construir un futuro próspero y justo para todos los peruanos.
@@ -40,7 +40,7 @@ export default function Home() {
           <div className="mt-8 sm:mt-10">
             <Link
               href="/biografia"
-              className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-red-600 transition-colors duration-200"
+              className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-800 hover:bg-red-600 transition-colors duration-200"
             >
               Conóceme más
             </Link>
