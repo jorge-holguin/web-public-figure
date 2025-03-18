@@ -24,7 +24,6 @@ export default function ChatButton() {
     },
   ]);
   const [newMessage, setNewMessage] = useState("");
-  const [isThinking, setIsThinking] = useState(false);
   const [sessionId, setSessionId] = useState("");
   const [isStreaming, setIsStreaming] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
